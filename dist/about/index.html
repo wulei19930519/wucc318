@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于 · 我的博客</title>
+<meta name="description" content="记录、思考与分享">
+<meta property="og:title" content="关于 · 我的博客">
+<meta property="og:description" content="记录、思考与分享">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-domain.com/about/">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+
+<script>
+(function () {
+  var t = localStorage.getItem('theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="/">我的博客</a>
+    <div class="links">
+      <a href="/" class="">首页</a>
+      <a href="/archives/" class="">归档</a>
+      <a href="/tags/" class="">标签</a>
+      <a href="/search/" class="">搜索</a>
+      <a href="/about/" class="on">关于</a>
+      <button id="theme-toggle" aria-label="切换主题" title="切换深浅色">◐</button>
+    </div>
+  </nav>
+<main class="wrap">
+<h1 class="page-title">关于本站</h1><div class="prose"><p>你好，欢迎来到我的博客！</p>
+<p>这里记录我的技术笔记、思考和一些生活碎片。</p>
+<ul>
+<li><strong>技术栈</strong>：Markdown 写作 + 静态生成 + Cloudflare Pages 托管</li>
+<li><strong>更新频率</strong>：随缘，但尽量保持</li>
+<li><strong>联系方式</strong>：可以在 GitHub 上找到我</li>
+</ul>
+<blockquote>
+<p>如果某篇文章对你有帮助，那就是这个站存在的意义。</p>
+</blockquote>
+</div>
+</main>
+<footer class="foot">
+  <span>© 2026 Your Name</span>
+  <span class="dot">·</span>
+  <a href="/feed.xml">RSS</a>
+  <span class="dot">·</span>
+  <a href="/sitemap.xml">Sitemap</a>
+</footer>
+<script>
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+}
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+function syncHlTheme() {
+  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var l = document.getElementById('hl-light'), d = document.getElementById('hl-dark');
+  if (l && d) { l.disabled = dark; d.disabled = !dark; }
+}
+syncHlTheme();
+</script>
+
+
+
+</body>
+</html>

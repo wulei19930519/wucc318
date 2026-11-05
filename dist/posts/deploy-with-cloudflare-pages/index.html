@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用 Cloudflare Pages 部署博客的完整流程 · 我的博客</title>
+<meta name="description" content="从 GitHub 仓库到自定义域名上线，手把手走一遍 Cloudflare Pages 的部署流程，全程免费。">
+<meta property="og:title" content="用 Cloudflare Pages 部署博客的完整流程 · 我的博客">
+<meta property="og:description" content="从 GitHub 仓库到自定义域名上线，手把手走一遍 Cloudflare Pages 的部署流程，全程免费。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://your-domain.com/posts/deploy-with-cloudflare-pages/">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+
+<link id="hl-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<link id="hl-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+(function () {
+  var t = localStorage.getItem('theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="/">我的博客</a>
+    <div class="links">
+      <a href="/" class="">首页</a>
+      <a href="/archives/" class="">归档</a>
+      <a href="/tags/" class="">标签</a>
+      <a href="/search/" class="">搜索</a>
+      <a href="/about/" class="">关于</a>
+      <button id="theme-toggle" aria-label="切换主题" title="切换深浅色">◐</button>
+    </div>
+  </nav>
+<main class="wrap wide">
+
+  <div class="post-layout">
+  <div class="post-col">
+  <article class="post">
+    <h1>用 Cloudflare Pages 部署博客的完整流程</h1>
+    <div class="meta"><time datetime="2026-11-05T00:00:00.000Z">2026-11-05</time><span class="stat">约 2 分钟 · 399 字</span> <a class="tag" href="/tags/%E5%BB%BA%E7%AB%99/">#建站</a> <a class="tag" href="/tags/%E6%95%99%E7%A8%8B/">#教程</a></div>
+    <div class="prose"><p>这篇记录一下把博客部署到 Cloudflare Pages 的完整流程，之后换主题、发新文章都走同一条路。</p>
+<h2 id="h-1">前置准备</h2>
+<ul>
+<li>一个 GitHub 账号，新建一个仓库（比如 <code>blog</code>）</li>
+<li>一个托管在 Cloudflare 的域名</li>
+</ul>
+<h2 id="h-2">部署步骤</h2>
+<h3 id="h-3">1. 推送代码到 GitHub</h3>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;init blog&quot;
+git remote add origin git@github.com:你的用户名/blog.git
+git push -u origin main
+</code></pre>
+<h3 id="h-4">2. 连接 Cloudflare Pages</h3>
+<ol>
+<li>打开 Cloudflare 控制台 → <strong>Workers &amp; Pages</strong> → <strong>Create</strong></li>
+<li>选择 <strong>Pages</strong> → <strong>Connect to Git</strong>，授权并选中刚才的仓库</li>
+<li>构建设置：<ul>
+<li>构建命令：<code>node build.js</code>（或者干脆留空，把 dist 提交进仓库）</li>
+<li>输出目录：<code>dist</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="h-5">3. 绑定自定义域名</h3>
+<p>项目创建完成后：</p>
+<ul>
+<li>进入项目 → <strong>Custom domains</strong> → <strong>Set up a custom domain</strong></li>
+<li>输入你的域名（如 <code>blog.example.com</code>），因为域名 DNS 就在 Cloudflare，会自动添加 CNAME 记录</li>
+<li>几分钟内 HTTPS 证书自动签发完成</li>
+</ul>
+<h3 id="h-6">4. 自动发布</h3>
+<p>之后每次写作流程：</p>
+<pre><code class="language-bash"># 写一篇新文章 posts/xxx.md
+node build.js   # 本地预览确认
+git add . &amp;&amp; git commit -m &quot;new post&quot; &amp;&amp; git push
+</code></pre>
+<p>push 之后 Cloudflare 会自动构建并上线，Pull Request 还会生成预览链接。</p>
+<h2 id="h-7">常见问题</h2>
+<ul>
+<li><strong>构建失败</strong>：检查 Node 版本，Pages 默认 Node 版本可以在项目 Settings 里指定</li>
+<li><strong>国内访问慢</strong>：Cloudflare 免费版走的是国际节点，速度看线路，一般可用</li>
+<li><strong>缓存不更新</strong>：静态资源默认带缓存，发布新版本后会自动刷新</li>
+</ul>
+<h2 id="h-8">成本</h2>
+<p>0 元。Pages 不限流量、每月 500 次构建额度，对个人博客绰绰有余。</p>
+</div>
+  </article>
+  <div class="post-nav"><a href="/posts/hello-world/">较旧一篇：你好，世界——博客开张 →</a></div>
+  </div>
+  <aside class="toc"><div class="toc-title">目录</div><nav class="toc-list"><a class="lvl2" href="#h-1">前置准备</a><a class="lvl2" href="#h-2">部署步骤</a><a class="lvl3" href="#h-3">1. 推送代码到 GitHub</a><a class="lvl3" href="#h-4">2. 连接 Cloudflare Pages</a><a class="lvl3" href="#h-5">3. 绑定自定义域名</a><a class="lvl3" href="#h-6">4. 自动发布</a><a class="lvl2" href="#h-7">常见问题</a><a class="lvl2" href="#h-8">成本</a></nav></aside>
+  </div>
+
+</main>
+<footer class="foot">
+  <span>© 2026 Your Name</span>
+  <span class="dot">·</span>
+  <a href="/feed.xml">RSS</a>
+  <span class="dot">·</span>
+  <a href="/sitemap.xml">Sitemap</a>
+</footer>
+<script>
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+}
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+function syncHlTheme() {
+  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var l = document.getElementById('hl-light'), d = document.getElementById('hl-dark');
+  if (l && d) { l.disabled = dark; d.disabled = !dark; }
+}
+syncHlTheme();
+</script>
+<script>
+/* 代码一键复制 */
+document.querySelectorAll('.prose pre').forEach(function (pre) {
+  pre.style.position = 'relative';
+  var btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.type = 'button';
+  btn.textContent = '复制';
+  btn.addEventListener('click', function () {
+    navigator.clipboard.writeText(pre.innerText.replace(/^复制\n/, '')).then(function () {
+      btn.textContent = '已复制';
+      setTimeout(function () { btn.textContent = '复制'; }, 1500);
+    });
+  });
+  pre.appendChild(btn);
+});
+/* 图片点击放大 */
+var lb = document.createElement('div');
+lb.id = 'lightbox';
+lb.innerHTML = '<img alt="">';
+document.body.appendChild(lb);
+lb.addEventListener('click', function () { lb.classList.remove('show'); });
+document.querySelectorAll('.prose img').forEach(function (img) {
+  img.addEventListener('click', function () {
+    lb.querySelector('img').src = img.src;
+    lb.classList.add('show');
+  });
+});
+/* 阅读进度条 */
+var bar = document.createElement('div');
+bar.id = 'progress';
+document.body.appendChild(bar);
+addEventListener('scroll', function () {
+  var h = document.documentElement;
+  var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  bar.style.width = pct + '%';
+}, { passive: true });
+/* 代码高亮 */
+addEventListener('load', function () {
+  if (window.hljs) hljs.highlightAll();
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>页面不存在 · 我的博客</title>
+<meta name="description" content="记录、思考与分享">
+<meta property="og:title" content="页面不存在 · 我的博客">
+<meta property="og:description" content="记录、思考与分享">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-domain.com">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+
+<script>
+(function () {
+  var t = localStorage.getItem('theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="/">我的博客</a>
+    <div class="links">
+      <a href="/" class="">首页</a>
+      <a href="/archives/" class="">归档</a>
+      <a href="/tags/" class="">标签</a>
+      <a href="/search/" class="">搜索</a>
+      <a href="/about/" class="">关于</a>
+      <button id="theme-toggle" aria-label="切换主题" title="切换深浅色">◐</button>
+    </div>
+  </nav>
+<main class="wrap">
+<div class="notfound"><h1>404</h1><p>页面不存在，<a href="/">回到首页</a>。</p></div>
+</main>
+<footer class="foot">
+  <span>© 2026 Your Name</span>
+  <span class="dot">·</span>
+  <a href="/feed.xml">RSS</a>
+  <span class="dot">·</span>
+  <a href="/sitemap.xml">Sitemap</a>
+</footer>
+<script>
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+}
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+function syncHlTheme() {
+  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var l = document.getElementById('hl-light'), d = document.getElementById('hl-dark');
+  if (l && d) { l.disabled = dark; d.disabled = !dark; }
+}
+syncHlTheme();
+</script>
+
+
+
+</body>
+</html>

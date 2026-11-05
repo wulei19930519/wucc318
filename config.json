@@ -1,0 +1,16 @@
+{
+  "name": "我的博客",
+  "description": "一个基于静态生成的个人博客",
+  "url": "https://your-domain.com",
+  "author": "Your Name",
+  "bio": "记录、思考与分享",
+  "postsPerPage": 10,
+  "permalink": "posts/:slug/",
+  "analyticsToken": "",
+  "giscus": {
+    "repo": "",
+    "repoId": "",
+    "category": "Announcements",
+    "categoryId": ""
+  }
+}

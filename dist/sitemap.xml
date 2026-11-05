@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://your-domain.com/</loc></url>
+<url><loc>https://your-domain.com/posts/deploy-with-cloudflare-pages/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://your-domain.com/posts/hello-world/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://your-domain.com/posts/markdown-cheatsheet/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://your-domain.com/archives/</loc></url>
+<url><loc>https://your-domain.com/tags/</loc></url>
+<url><loc>https://your-domain.com/search/</loc></url>
+<url><loc>https://your-domain.com/about/</loc></url>
+</urlset>

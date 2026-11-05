@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown 写作速查 · 我的博客</title>
+<meta name="description" content="写博客最常用的 Markdown 语法速查：标题、列表、代码块、表格、引用，看这一篇就够了。">
+<meta property="og:title" content="Markdown 写作速查 · 我的博客">
+<meta property="og:description" content="写博客最常用的 Markdown 语法速查：标题、列表、代码块、表格、引用，看这一篇就够了。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://your-domain.com/posts/markdown-cheatsheet/">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+
+<link id="hl-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<link id="hl-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+(function () {
+  var t = localStorage.getItem('theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="/">我的博客</a>
+    <div class="links">
+      <a href="/" class="">首页</a>
+      <a href="/archives/" class="">归档</a>
+      <a href="/tags/" class="">标签</a>
+      <a href="/search/" class="">搜索</a>
+      <a href="/about/" class="">关于</a>
+      <button id="theme-toggle" aria-label="切换主题" title="切换深浅色">◐</button>
+    </div>
+  </nav>
+<main class="wrap wide">
+
+  <div class="post-layout">
+  <div class="post-col">
+  <article class="post">
+    <h1>Markdown 写作速查</h1>
+    <div class="meta"><time datetime="2026-11-05T00:00:00.000Z">2026-11-05</time><span class="stat">约 1 分钟 · 197 字</span> <a class="tag" href="/tags/%E6%95%99%E7%A8%8B/">#教程</a></div>
+    <div class="prose"><p>这是一篇常驻速查文，写文章忘了语法就回来看。</p>
+<h2 id="h-1">基础语法</h2>
+<pre><code class="language-markdown"># 一级标题
+## 二级标题
+
+**加粗** *斜体* ~~删除线~~ `行内代码`
+
+- 无序列表
+- 无序列表
+
+1. 有序列表
+2. 有序列表
+
+&gt; 引用一段话
+
+[链接文字](https://example.com)
+![图片描述](/images/xxx.png)
+</code></pre>
+<h2 id="h-2">代码块</h2>
+<p>用三个反引号包裹，标注语言即可高亮：</p>
+<pre><code class="language-js">function hello(name) {
+  return `Hello, ${name}!`;
+}
+</code></pre>
+<h2 id="h-3">表格</h2>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表格</td>
+<td><code>|</code> 分隔单元格</td>
+</tr>
+<tr>
+<td>对齐</td>
+<td><code>:---</code> 左对齐，<code>---:</code> 右对齐</td>
+</tr>
+</tbody></table>
+<h2 id="h-4">任务列表</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 搭好博客</li>
+<li><input disabled="" type="checkbox"> 写满 100 篇文章</li>
+<li><input disabled="" type="checkbox"> 被搜索引擎收录</li>
+</ul>
+<h2 id="h-5">写作建议</h2>
+<ol>
+<li>一篇文章只讲一个主题</li>
+<li>开头三句话让读者知道「这篇文章能解决什么问题」</li>
+<li>多用小标题和列表，少写大段文字</li>
+</ol>
+</div>
+  </article>
+  <div class="post-nav"><a href="/posts/hello-world/">← 较新一篇：你好，世界——博客开张</a></div>
+  </div>
+  <aside class="toc"><div class="toc-title">目录</div><nav class="toc-list"><a class="lvl2" href="#h-1">基础语法</a><a class="lvl2" href="#h-2">代码块</a><a class="lvl2" href="#h-3">表格</a><a class="lvl2" href="#h-4">任务列表</a><a class="lvl2" href="#h-5">写作建议</a></nav></aside>
+  </div>
+
+</main>
+<footer class="foot">
+  <span>© 2026 Your Name</span>
+  <span class="dot">·</span>
+  <a href="/feed.xml">RSS</a>
+  <span class="dot">·</span>
+  <a href="/sitemap.xml">Sitemap</a>
+</footer>
+<script>
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+}
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+function syncHlTheme() {
+  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var l = document.getElementById('hl-light'), d = document.getElementById('hl-dark');
+  if (l && d) { l.disabled = dark; d.disabled = !dark; }
+}
+syncHlTheme();
+</script>
+<script>
+/* 代码一键复制 */
+document.querySelectorAll('.prose pre').forEach(function (pre) {
+  pre.style.position = 'relative';
+  var btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.type = 'button';
+  btn.textContent = '复制';
+  btn.addEventListener('click', function () {
+    navigator.clipboard.writeText(pre.innerText.replace(/^复制\n/, '')).then(function () {
+      btn.textContent = '已复制';
+      setTimeout(function () { btn.textContent = '复制'; }, 1500);
+    });
+  });
+  pre.appendChild(btn);
+});
+/* 图片点击放大 */
+var lb = document.createElement('div');
+lb.id = 'lightbox';
+lb.innerHTML = '<img alt="">';
+document.body.appendChild(lb);
+lb.addEventListener('click', function () { lb.classList.remove('show'); });
+document.querySelectorAll('.prose img').forEach(function (img) {
+  img.addEventListener('click', function () {
+    lb.querySelector('img').src = img.src;
+    lb.classList.add('show');
+  });
+});
+/* 阅读进度条 */
+var bar = document.createElement('div');
+bar.id = 'progress';
+document.body.appendChild(bar);
+addEventListener('scroll', function () {
+  var h = document.documentElement;
+  var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  bar.style.width = pct + '%';
+}, { passive: true });
+/* 代码高亮 */
+addEventListener('load', function () {
+  if (window.hljs) hljs.highlightAll();
+});
+</script>
+
+
+</body>
+</html>

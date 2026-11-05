@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我的博客</title>
+<meta name="description" content="记录、思考与分享">
+<meta property="og:title" content="我的博客">
+<meta property="og:description" content="记录、思考与分享">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-domain.com/">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+
+<script>
+(function () {
+  var t = localStorage.getItem('theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="/">我的博客</a>
+    <div class="links">
+      <a href="/" class="on">首页</a>
+      <a href="/archives/" class="">归档</a>
+      <a href="/tags/" class="">标签</a>
+      <a href="/search/" class="">搜索</a>
+      <a href="/about/" class="">关于</a>
+      <button id="theme-toggle" aria-label="切换主题" title="切换深浅色">◐</button>
+    </div>
+  </nav>
+<main class="wrap">
+
+  <section class="hero">
+    <h1>我的博客</h1>
+    <p>记录、思考与分享</p>
+  </section>
+  <article class="card">
+  <a class="card-title" href="/posts/deploy-with-cloudflare-pages/">用 Cloudflare Pages 部署博客的完整流程</a>
+  <div class="meta"><time datetime="2026-11-05T00:00:00.000Z">2026-11-05</time> <a class="tag" href="/tags/%E5%BB%BA%E7%AB%99/">#建站</a> <a class="tag" href="/tags/%E6%95%99%E7%A8%8B/">#教程</a></div>
+  <p class="summary">从 GitHub 仓库到自定义域名上线，手把手走一遍 Cloudflare Pages 的部署流程，全程免费。</p>
+</article>
+<article class="card">
+  <a class="card-title" href="/posts/hello-world/">你好，世界——博客开张</a>
+  <div class="meta"><time datetime="2026-11-05T00:00:00.000Z">2026-11-05</time> <a class="tag" href="/tags/%E9%9A%8F%E7%AC%94/">#随笔</a></div>
+  <p class="summary">博客正式开张。这里是第一篇文章，聊聊为什么写博客，以及这个小站是怎么搭起来的。</p>
+</article>
+<article class="card">
+  <a class="card-title" href="/posts/markdown-cheatsheet/">Markdown 写作速查</a>
+  <div class="meta"><time datetime="2026-11-05T00:00:00.000Z">2026-11-05</time> <a class="tag" href="/tags/%E6%95%99%E7%A8%8B/">#教程</a></div>
+  <p class="summary">写博客最常用的 Markdown 语法速查：标题、列表、代码块、表格、引用，看这一篇就够了。</p>
+</article>
+
+</main>
+<footer class="foot">
+  <span>© 2026 Your Name</span>
+  <span class="dot">·</span>
+  <a href="/feed.xml">RSS</a>
+  <span class="dot">·</span>
+  <a href="/sitemap.xml">Sitemap</a>
+</footer>
+<script>
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+}
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+function syncHlTheme() {
+  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var l = document.getElementById('hl-light'), d = document.getElementById('hl-dark');
+  if (l && d) { l.disabled = dark; d.disabled = !dark; }
+}
+syncHlTheme();
+</script>
+
+
+
+</body>
+</html>
